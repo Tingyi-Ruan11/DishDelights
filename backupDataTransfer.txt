@@ -1,0 +1,24 @@
+import { getFeaturedEvents } from '@/dummy-data';
+
+
+    <ul className={classes.list}>
+      {items.map((recipe) => (
+        <EventItem
+          key={recipe.id}
+          id={recipe.id}
+          title={recipe.title}
+          description={recipe.description}
+          instructions={recipe.date}
+          category={recipe.category}
+          image={recipe.image}
+          date={recipe.date}
+        />
+      ))}
+    </ul>
+
+
+Recipes
+Recipe
+
+recipes
+recipe

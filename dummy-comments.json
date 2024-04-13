@@ -1,0 +1,21 @@
+[
+    {
+      "email": "user1@example.com",
+      "name": "John Doe",
+      "text": "This event was amazing!",
+      "eventId": "e1"
+    },
+    {
+      "email": "user2@example.com",
+      "name": "Jane Smith",
+      "text": "I learned a lot from this event. Thank you!",
+      "eventId": "e1"
+    },
+    {
+      "email": "user3@example.com",
+      "name": "Alice Johnson",
+      "text": "Looking forward to the next event!",
+      "eventId": "e2"
+    }
+  ]
+  
