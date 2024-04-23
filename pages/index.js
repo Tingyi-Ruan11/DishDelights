@@ -7,10 +7,12 @@ import RecipeList from '../components/recipes/recipe-list';
 
 import { getAllRecipes } from '@/dummy-recipes';
 import Categories from '@/components/ui/categories';
+import RecipeStepCard from '@/components/recipes/recipe-step-card';
 
 function HomePage(props) {
   return (
     <div>
+      <RecipeStepCard />
       <Head>
         <title>Dish Delights</title>
         <meta

@@ -5,9 +5,9 @@ function LogisticsItem(props) {
 
   return (
     <li className={classes.item}>
-      <span className={classes.icon}>
+      {/* <span className={classes.icon}>
         <Icon />
-      </span>
+      </span> */}
       <span className={classes.content}>{props.children}</span>
     </li>
   );
