@@ -6,8 +6,8 @@ import { getRecipeById, getFeaturedRecipes } from "@/dummy-recipes";
 import RecipeSummary from "../../components/recipe-detail/recipe-summary";
 import RecipeLogistics from "../../components/recipe-detail/recipe-logistics";
 import RecipeContent from "../../components/recipe-detail/recipe-content";
-import ErrorAlert from "../../components/ui/error-alert";
-import Comments from "../../components/input/comments";
+// import ErrorAlert from "../../components/ui/error-alert";
+// import Comments from "../../components/input/comments";
 
 function RecipeDetailPage(props) {
   const recipe = props.selectedRecipe;
@@ -41,7 +41,7 @@ function RecipeDetailPage(props) {
       <RecipeContent>
         <p>{recipe.description}</p>
       </RecipeContent>
-      <Comments recipeId={recipe.recipeId} />
+      {/* <Comments recipeId={recipe.recipeId} /> */}
     </Fragment>
   );
 }

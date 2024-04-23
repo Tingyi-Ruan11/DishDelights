@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import AddressIcon from "../icons/address-icon";
-import DateIcon from "../icons/date-icon";
 import LogisticsItem from "./logistics-item";
 import classes from "./recipe-logistics.module.css";
 
@@ -52,26 +50,26 @@ function RecipeLogistics(props) {
       </div>
       <ul className={classes.list}>
         <h2>{title}</h2>
-        <LogisticsItem icon={DateIcon}>
+        <LogisticsItem>
           <time>{date}</time>
         </LogisticsItem>
         {/* <LogisticsItem icon={AddressIcon}>
           <address>{addressText}</address>
         </LogisticsItem> */}
-        <LogisticsItem icon={AddressIcon}>
+        <LogisticsItem>
           <div className={classes.longText}>{description}</div>
         </LogisticsItem>
-        <LogisticsItem icon={AddressIcon}>
+        <LogisticsItem>
           <div className={classes.longText}>{instructions}</div>
         </LogisticsItem>
         {ingredients.map((ingredients, index) => (
-          <LogisticsItem key={`ingredients-${index}`} icon={AddressIcon}>
+          <LogisticsItem key={`ingredients-${index}`}>
             {ingredients}
           </LogisticsItem>
         ))}
 
         {category.map((categoryItem, index) => (
-          <LogisticsItem key={`category-${index}`} icon={AddressIcon}>
+          <LogisticsItem key={`category-${index}`}>
             {categoryItem}
           </LogisticsItem>
         ))}

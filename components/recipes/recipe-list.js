@@ -6,8 +6,7 @@ function RecipeList(props) {
   // const firstImage = items
 
   return (
-
-    <ul className={classes.list}>
+    <div className="grid grid-cols-4">
       {items.map((recipe) => (
         <RecipeItem
           key={recipe.recipeId}
@@ -17,10 +16,9 @@ function RecipeList(props) {
           instructions={recipe.date}
           category={recipe.category}
           image={recipe.imageUrls}
-          date={recipe.date}
         />
       ))}
-    </ul>
+    </div>
 
 
     // <ul className={classes.list}>

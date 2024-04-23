@@ -2,11 +2,11 @@ import Head from 'next/head';
 
 // import { getFeaturedEvents } from '../helpers/api-util';
 
-import EventList from '../components/events/event-list';
+
 import RecipeList from '../components/recipes/recipe-list';
-import NewsletterRegistration from '../components/input/newsletter-registration';
-import { getFeaturedEvents } from '@/dummy-data';
+
 import { getAllRecipes } from '@/dummy-recipes';
+import Categories from '@/components/ui/categories';
 
 function HomePage(props) {
   return (
@@ -18,20 +18,23 @@ function HomePage(props) {
           content='Find a lot of great Dish that allow you to evolve...'
         />
       </Head>
-      <NewsletterRegistration />
+      <Categories/>
       <RecipeList items={props.recipes} />
-      <EventList items={props.events} />
+      <div className='grid grid-cols-4'>
+        <p>1111</p>
+        <p>1111</p>
+        <p>1111</p>
+        <p>1111</p>
+      </div>
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const featuredEvents = await getFeaturedEvents();
   const featuredRecipes = await getAllRecipes();
   
   return {
     props: {
-      events: featuredEvents,
       recipes: featuredRecipes
     },
     revalidate: 1800,

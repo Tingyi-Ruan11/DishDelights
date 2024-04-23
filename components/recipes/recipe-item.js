@@ -1,8 +1,7 @@
 import Image from "next/image";
 
 import Button from "../ui/button";
-import DateIcon from "../icons/date-icon";
-import AddressIcon from "../icons/address-icon";
+
 
 import ArrowRightIcon from "../icons/arrow-right-icon";
 import classes from "./recipe-item.module.css";
@@ -45,7 +44,6 @@ function RecipeItem(props) {
             <div>{category}</div>
           </div>
           <div className={classes.date}>
-            <DateIcon />
             <time>{humanReadableDate}</time>
           </div>
           {/* <div className={classes.address}>

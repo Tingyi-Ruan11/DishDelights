@@ -4,11 +4,11 @@ import useSWR from "swr";
 import Head from "next/head";
 
 // import { getFilteredEvents } from '../../helpers/api-util';
-import { getFilteredEvents } from "@/dummy-data";
-import RecipeList from "../../components/recipes/event-list";
+// import { getFilteredEvents } from "@/dummy-data";
+import RecipeList from "../../components/recipes/recipe-list";
 import ResultsTitle from "../../components/recipes/results-title";
 import Button from "../../components/ui/button";
-import ErrorAlert from "../../components/ui/error-alert";
+// import ErrorAlert from "../../components/ui/error-alert";
 
 function FilteredRecipesPage(props) {
   const [loadedRecipes, setLoadedRecipes] = useState();
