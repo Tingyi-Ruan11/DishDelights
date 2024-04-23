@@ -25,29 +25,10 @@
   margin: 0.5rem 0;
 }
 
-.date,
-.address {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.date svg,
-.address svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #666666;
-}
 
 .content time {
   color: #666666;
   font-weight: bold;
-}
-
-.content address {
-  margin: 0.5rem 0;
-  color: #666666;
-  white-space: pre;
 }
 
 .actions {
@@ -76,7 +57,7 @@
   height: 1.25rem;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .item {
     flex-direction: row;
   }
@@ -100,4 +81,4 @@
     flex-direction: row;
     justify-content: flex-end;
   }
-}
+} */

@@ -8,14 +8,14 @@ import classes from "./recipe-item.module.css";
 import InformationCircle from "../icons/information-circle";
 
 function RecipeItem(props) {
-  const { title, image, date, recipeId, description, instructions, category } =
+  const { title, image, recipeId, description, instructions, category } =
     props;
 
-  const humanReadableDate = new Date(date).toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  // const humanReadableDate = new Date(date).toLocaleDateString("en-US", {
+  //   day: "numeric",
+  //   month: "long",
+  //   year: "numeric",
+  // });
   // const formattedAddress = location.replace(', ', '\n');
   // console.log("recipeId",recipeId);
   // const recipeIdStr = String(recipeId);
@@ -24,7 +24,7 @@ function RecipeItem(props) {
 
   return (
     <li className={classes.item}>
-      <Image src={'/' + image[0]} alt={title} width={250} height={160} />
+      {/* <Image src={'/' + image[0]} alt={title} width={250} height={160} /> */}
       {/* {image.map((image, index) => (
         <Image src={"/" + image} alt={title} width={250} height={160} />
       ))} */}
@@ -32,19 +32,7 @@ function RecipeItem(props) {
         <div className={classes.summary}>
           <h2>{title}</h2>
           <div className={classes.address}>
-            <InformationCircle />
-            <div>{description}</div>
-          </div>
-          <div className={classes.address}>
-            <InformationCircle />
-            <div>{instructions}</div>
-          </div>
-          <div className={classes.address}>
-            <InformationCircle />
-            <div>{category}</div>
-          </div>
-          <div className={classes.date}>
-            <time>{humanReadableDate}</time>
+            <div>{`Category:`+category}</div>
           </div>
           {/* <div className={classes.address}>
             <AddressIcon />

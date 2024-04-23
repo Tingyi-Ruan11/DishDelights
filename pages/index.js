@@ -5,8 +5,9 @@ import Head from 'next/head';
 
 import RecipeList from '../components/recipes/recipe-list';
 
-import { getAllRecipes } from '@/dummy-recipes';
+import { getAllRecipes, getTwentyRandomRecipes  } from '@/dummy-recipes';
 import Categories from '@/components/ui/categories';
+import Container from '@/components/container';
 
 function HomePage(props) {
   return (
@@ -19,13 +20,9 @@ function HomePage(props) {
         />
       </Head>
       <Categories/>
-      <RecipeList items={props.recipes} />
-      <div className='grid grid-cols-4'>
-        <p>1111</p>
-        <p>1111</p>
-        <p>1111</p>
-        <p>1111</p>
-      </div>
+      <Container>
+        <RecipeList items={props.recipes} />
+      </Container>
     </div>
   );
 }

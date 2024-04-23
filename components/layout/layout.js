@@ -11,7 +11,7 @@ function Layout(props) {
     <Fragment>
       <div className={font.className}>
         <MainHeader />
-        <main>{props.children}</main>
+        <main className="pb-12 pt-16">{props.children}</main>
       </div>
     </Fragment>
   );
