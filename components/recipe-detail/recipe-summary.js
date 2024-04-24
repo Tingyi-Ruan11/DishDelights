@@ -1,11 +1,11 @@
 import classes from './recipe-summary.module.css';
 
 function RecipeSummary(props) {
-  const { strMeal } = props;
+  const { imgurl } = props;
 
   return (
     <section className={classes.summary}>
-      <h1>{strMeal}</h1>
+      <img src={imgurl}/>
     </section>
   );
 }
