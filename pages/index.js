@@ -13,7 +13,7 @@ function HomePage(props) {
   return (
     <div>
       {/* <RecipeStepCard /> */}
-      <RecipeLogistics />
+      {/* <RecipeLogistics /> */}
       <Head>
         <title>Dish Delights</title>
         <meta
