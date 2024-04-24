@@ -26,7 +26,6 @@ function HomePage(props) {
       <Categories/>
       <Container>
         <RecipeList items={props.recipes} />
-        <RecipeStepCard />
       </Container>
       
     </div>

@@ -23,17 +23,17 @@ function RecipeDetailPage(props) {
   return (
     <Fragment>
       <Head>
-        <title>{recipe.title}</title>
+        <title>{recipe.strMeal}</title>
         <meta name="description" content={recipe.description} />
       </Head>
-      <RecipeSummary title={recipe.title} />
+      {/* <RecipeSummary imgurl={recipe.strMealThumb} /> */}
       <RecipeLogistics
         id={recipe.idMeal}
         data = {recipe}
       />
-      <RecipeContent>
+      {/* <RecipeContent>
         <p>{recipe.description}</p>
-      </RecipeContent>
+      </RecipeContent> */}
       {/* <Comments recipeId={recipe.recipeId} /> */}
     </Fragment>
   );

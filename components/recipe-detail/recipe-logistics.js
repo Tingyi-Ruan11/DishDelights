@@ -2,6 +2,22 @@ import Image from "next/image";
 
 import LogisticsItem from "./logistics-item";
 import classes from "./recipe-logistics.module.css";
+import { BiCategoryAlt } from "react-icons/bi";
+import { TbMilk } from "react-icons/tb";
+import { HiOutlineCheckCircle } from "react-icons/hi";
+import { HiOutlineCheck } from "react-icons/hi";
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
+import { FcIdea } from "react-icons/fc";
+import { FcServices } from "react-icons/fc";
+import { FcTodoList } from "react-icons/fc";
+import { FcCheckmark } from "react-icons/fc";
+import { PiBowlFoodBold } from "react-icons/pi";
+import { FaBowlFood } from "react-icons/fa6";
+
+import Container from "../container";
+import StepCard from "./stepCard";
+import { useState } from 'react';
+import ControlButtons from "./controlButton";
 
 function RecipeLogistics(props) {
   // const {
@@ -82,51 +98,87 @@ function RecipeLogistics(props) {
     const ingredientMeasure = data[`strMeasure${i}`];
     if (ingredient && ingredient.trim() !== "") {
       ingredientItems.push(
-        <LogisticsItem key={`ingredients-${i}`} className={classes.longText}>
-          {ingredient + ":" + ingredientMeasure}
-        </LogisticsItem>
+        <li key={`ingredients-${i}`} className="mb-2 flex items-center gap-1">
+          {/* <HiOutlineCheck /> */}
+          <FcCheckmark />
+          {ingredient + ":     " + ingredientMeasure}
+        </li>
       );
     }
   }
   const instructionsData = data.strInstructions.split("\r\n");
+  console.log(instructionsData);
   const instructionsItems = [];
-  for (let j = 1; j <= instructionsData.length; j++) {
+  for (let j = 0; j < instructionsData.length; j++) {
     const instruction = instructionsData[j];
+    if (instruction!=""){
     instructionsItems.push(
-      <LogisticsItem key={`instructions-${j}`} className={classes.longText}>
-        {instruction}
-      </LogisticsItem>
-    );
+      // <div key={`instructions-${j}`} className={classes.longText}>
+        instruction
+      // {/* </div> */}
+    );}
   }
+
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const moveSlide = (direction) => {
+      const newStep = (currentStep + direction + instructionsItems.length) % instructionsItems.length;
+      setCurrentStep(newStep);
+  };
 
   // const images = image;
   // console.log("images", images);
   return (
     <section className={classes.logistics}>
+      <div className="flex text-left">
+        <h1 className="flex items-center font-bold gap-2 text-xl min-[800px]:text-2xl">
+        <PiBowlFoodBold />
+        <FaBowlFood />
+
+        {data.strMeal}
+        </h1>
+      </div>
       <div className={classes.image}>
-        <Image
+        <img
           src={data.strMealThumb}
-          alt={Image}
-          width={400}
-          height={400}
+          alt={data.strMeal}
+          // width={400}
+          // height={400}
         />
       </div>
-      <div>
-        <LogisticsItem>Info:</LogisticsItem>
-        <LogisticsItem>{data.strMeal}</LogisticsItem>
-        <LogisticsItem>{data.strCategory}</LogisticsItem>
-        <LogisticsItem>{data.strArea}</LogisticsItem>
-        {/* <ul className={classes.list}>{instructionsItems}</ul> */}
+      <div className="flex items-center gap-1">
+        <BiCategoryAlt />
+        <p>
+          <strong>Category:</strong> {data.strCategory}
+        </p>
       </div>
-      <div>
-        <LogisticsItem>Instructions:</LogisticsItem>
-        <ul className={classes.list}>{instructionsItems}</ul>
-      </div>
-      <div>
-        <LogisticsItem>Ingredient:</LogisticsItem>
-        <ul className={classes.list}>{ingredientItems}</ul>
+      {/* <p><strong>Tags:</strong> {data.strTags}</p> */}
+      <div className="flex items-center gap-1">
+      <TbMilk />
+      <h2>
+        <strong>Ingredients:</strong>
+      </h2>
       </div>
 
+      <ul className="list-none p-0 grid grid-cols-1 min-[700px]:grid-cols-2">{ingredientItems}</ul>
+      <div className="flex items-center gap-1">
+      <FcIdea />
+      <h2>
+        <strong>Instructions:</strong>
+      </h2>
+      </div>
+      {/* <div>
+        <ul className="list-none p-0">{instructionsItems}</ul>
+      </div> */}
+      {/* <StepCard step={instructionsItems[currentStep]} index={currentStep} /> */}
+      <StepCard
+                step={instructionsItems[currentStep]}
+                index={currentStep}
+                prevStep={() => moveSlide(-1)}
+                nextStep={() => moveSlide(1)}
+                totalSteps={instructionsItems.length}
+            />
+      {/* <ControlButtons moveSlide={moveSlide} currentStep={currentStep} totalSteps={instructionsItems.length} /> */}
       {/* <div className={classes.imageGroup}>
 
         {images.map(

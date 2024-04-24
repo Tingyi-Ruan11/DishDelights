@@ -4,11 +4,11 @@ function LogisticsItem(props) {
   const { icon: Icon } = props;
 
   return (
-    <li className={classes.item}>
+    <li>
       {/* <span className={classes.icon}>
         <Icon />
       </span> */}
-      <span className={classes.content}>
+      <span>
         {props.children}
         </span>
     </li>
