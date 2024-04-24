@@ -1,15 +1,12 @@
 import { useRecipes } from "@/store/recipe-context";
 import Image from "next/image";
-// import qs from "query-string";
-const CategoryBox = (props, selected) => {
+const CategoryBox = (props) => {
 
   const {fetchRecipesByCategory} = useRecipes();
-
+  const selected = props.isSelected
   const handleCategoryClick = () => {
+    props.onSelectedCategory(props.lable);
     fetchRecipesByCategory(props.lable)
-    // console.log("props.lable",props.lable)
-
-    // props.onResponseData(props.lable);
   };
   return (
     <div
@@ -26,10 +23,9 @@ const CategoryBox = (props, selected) => {
                 curcor-pointer 
                 max-w-50 
                 min-w-20
-
+                ${selected ? `border-b-neutral-800` : `border-transparent` }
+                ${selected ? `text-neutral-800` : `text-neutral-500` }
             `}
-            // ${selected ? `border-b-neutral-800` : `border-transparent` }
-            // ${selected ? `text-neutral-800` : `text-neutral-500` }
     onClick={handleCategoryClick}
     >  <div className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg">
         <Image src={props.iconURL} width={45} height={45} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/></div>
@@ -40,14 +36,3 @@ const CategoryBox = (props, selected) => {
 };
 
 export default CategoryBox;
-    // const router = useRouter();
-    // const params = useSearchParams();
-
-    // const handleClick = useCallback(() => {
-    //     let (params) {
-    //         currentQuery = qs.parse(params.toString());
-    //     }
-    //     const updatedQue
-    // },[]
-
-    // );

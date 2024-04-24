@@ -4,7 +4,8 @@ import {
   getTwentyRandomRecipes,
   getRecipesFromFile,
   getRecipesByCategory,
-  getRecipeBySearch
+  getRecipeBySearch,
+  getRandomRecipes
 } from "@/dummy-recipes";
 
 const RecipesContext = createContext(null);
@@ -15,10 +16,18 @@ export function useRecipes() {
 
 export const RecipesProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
+  const [isGetRandom, setIsGetRandom] = useState(false);
+
+  useEffect(() => {
+    if(isGetRandom){
+        fetchRecommandRecipes();
+        setIsGetRandom(!isGetRandom)
+    }
+  }, [isGetRandom]);
 
   const fetchRecommandRecipes = async () => {
     try {
-      const data = await getRecipesFromFile();
+      const data = await getRandomRecipes();
       setRecipes(data);
     } catch (error) {
       console.error("Failed to fetch recipes", error);
@@ -57,7 +66,7 @@ export const RecipesProvider = ({ children }) => {
 
   return (
     <RecipesContext.Provider
-      value={{ recipes, fetchRecipesBySearch, fetchRecipesByCategory,fetchRecommandRecipes }}
+      value={{ recipes, fetchRecipesBySearch, fetchRecipesByCategory,fetchRecommandRecipes,setIsGetRandom }}
     >
       {children}
     </RecipesContext.Provider>

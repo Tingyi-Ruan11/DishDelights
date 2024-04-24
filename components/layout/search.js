@@ -1,23 +1,26 @@
 import { useState } from 'react';
 import { useRecipes } from "@/store/recipe-context";
 import { BiSearch } from "react-icons/bi";
+import { useRouter } from 'next/router';
 
 const Search = () => {
 
   const [inputValue, setInputValue] = useState(''); // 管理输入框的状态
   const { fetchRecipesBySearch } = useRecipes(); // 从 Context 获取搜索方法
+  const router = useRouter();
 
    // 处理输入变化
    const handleChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  // 处理点击搜索或输入后的回车键
+  
   const handleSearch = () => {
-    fetchRecipesBySearch(inputValue); // 使用当前输入值调用搜索方法
+    fetchRecipesBySearch(inputValue);
+    router.push('/');
   };
 
-  // 处理按键事件，特别是回车键
+  // 处理按键事件
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleSearch();

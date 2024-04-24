@@ -1,7 +1,6 @@
-import { getRecipesByCategory } from "@/dummy-recipes";
 import Container from "../container";
 import CategoryBox from "./categoryBox";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 export const categories = [
   {
     idCategory: "1",
@@ -106,22 +105,10 @@ export const categories = [
 ];
 
 const Categories = (props) => {
-//   const [selectedCategory, setSelectedCategory] = useState(null);
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const newData = await getRecipesByCategory(selectedCategory);
-//       console.log("newData",newData);
-//       props.onResponseData(newData);
-      
-//     };
-  
-//     if (selectedCategory !== null) {
-//       fetchData();
-//     }
-//   }, [selectedCategory]);
+  const [selectedCategory, setSelectedCategory] = useState();
+  const handleSelectedCategory = (category) => {
+    setSelectedCategory(category)
 
-  const handleSelectedCategory = (data) => {
-    // setSelectedCategory(data);
   };
 
   return (
@@ -133,7 +120,9 @@ const Categories = (props) => {
             lable={items.strCategory}
             description={items.strCategoryDescription}
             iconURL={items.strCategoryThumb}
-            onResponseData={handleSelectedCategory}
+            isSelected = {items.strCategory === selectedCategory}
+            selectedCategory = {selectedCategory}
+            onSelectedCategory = {handleSelectedCategory}
           />
         ))}
       </div>
