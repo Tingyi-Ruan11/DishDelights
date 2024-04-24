@@ -24,16 +24,16 @@ function RecipeItem(props) {
 
   return (
     <li className={classes.item}>
-      {/* <Image src={'/' + image[0]} alt={title} width={250} height={160} /> */}
+      <Image src={'/' + image[0]} alt={title} width={250} height={160} />
       {/* {image.map((image, index) => (
         <Image src={"/" + image} alt={title} width={250} height={160} />
       ))} */}
       <div className={classes.content}>
         <div className={classes.summary}>
-          <h2>{title}</h2>
-          <div className={classes.address}>
+          <h2 className="font-bold ">{title}</h2>
+          {/* <div className={classes.address}>
             <div>{`Category:`+category}</div>
-          </div>
+          </div> */}
           {/* <div className={classes.address}>
             <AddressIcon />
             <address>{formattedAddress}</address>
@@ -41,7 +41,7 @@ function RecipeItem(props) {
         </div>
         <div className={classes.actions}>
           <Button link={exploreLink}>
-            <span>Explore Recipe</span>
+            <span>Explore</span>
             <span className={classes.icon}>
               <ArrowRightIcon />
             </span>

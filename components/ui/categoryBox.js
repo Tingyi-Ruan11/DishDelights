@@ -20,19 +20,20 @@ const CategoryBox = (props, selected) => {
                 flex-col 
                 items-center 
                 justify-center 
-                gap-2 
+                gap-3
                 p-3 
                 border-b-2 
                 hover:text-neutral-800 
                 transition 
                 curcor-pointer 
                 max-w-50 
+                min-w-20
 
             `}
             // ${selected ? `border-b-neutral-800` : `border-transparent` }
             // ${selected ? `text-neutral-800` : `text-neutral-500` }
-    >
-        <Image src={props.iconURL} width={45} height={45} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/>
+    >  <div className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg">
+        <Image src={props.iconURL} width={45} height={45} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/></div>
         <div className="font-meidum text-sm">{props.lable}</div>
     </div>
   );
