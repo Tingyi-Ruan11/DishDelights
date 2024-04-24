@@ -26,11 +26,14 @@ function RecipeDetailPage(props) {
         <title>{recipe.strMeal}</title>
         <meta name="description" content={recipe.description} />
       </Head>
-      <RecipeSummary title={recipe.title} />
-      <RecipeLogistics id={recipe.idMeal} data={recipe[0]} />
-      <RecipeContent>
+      {/* <RecipeSummary imgurl={recipe.strMealThumb} /> */}
+      <RecipeLogistics
+        id={recipe.idMeal}
+        data = {recipe}
+      />
+      {/* <RecipeContent>
         <p>{recipe.description}</p>
-      </RecipeContent> 
+      </RecipeContent> */}
       {/* <Comments recipeId={recipe.recipeId} /> */}
     </Fragment>
   );
