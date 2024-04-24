@@ -14,26 +14,30 @@ import Categories from "@/components/ui/categories";
 import Container from "@/components/container";
 import RecipeLogistics from "@/components/recipe-detail/recipe-logistics";
 import RecipeStepCard from "@/components/recipes/recipe-step-card";
+import { useRecipes } from "@/store/recipe-context";
 
 function HomePage(props) {
-  const [recipesData, setRecipesData] = useState(null);
-  //
-  const handleRecipesDataCategoriesUpdate = (data) => {
-    setRecipesData(data);
-  };
-  //  first time loding
-  useEffect(() => {
-    const fetchData = async () => {
-      // asycs operation
-      const data = await getRecipesFromFile();
-      console.log("fetchDataEffect", data);
-      // update and triger rerending 
-      setRecipesData(data);
-    };
 
-    // 调用数据获取函数
-    fetchData();
-  }, []);
+  const { recipes,fetchRecommandRecipes } = useRecipes();
+  // const [recipesData, setRecipesData] = useState(null);
+
+  const handleRecipesDataCategoriesUpdate = (data) => {
+    // setRecipesData(data);
+  };
+
+  // //  first time loding
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     // asycs operation
+  //     const data = await getRecipesFromFile();
+  //     console.log("fetchDataEffect", data);
+  //     // update and triger rerending 
+  //     setRecipesData(data);
+  //   };
+
+  //   // 调用数据获取函数
+  //   fetchData();
+  // }, []);
 
   return (
     <div>
@@ -47,7 +51,7 @@ function HomePage(props) {
       <Categories onResponseData={handleRecipesDataCategoriesUpdate} />
       <Container>
         {/* <RecipeList items={props.recipes}/> */}
-        <div>{recipesData ? <RecipeList items={recipesData} /> : <p>Loading...</p>}</div>
+        <div>{recipes ? <RecipeList items={recipes} /> : <p>Loading...</p>}</div>
         
         <RecipeStepCard />
       </Container>

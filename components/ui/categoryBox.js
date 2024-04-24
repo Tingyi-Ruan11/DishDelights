@@ -1,11 +1,15 @@
+import { useRecipes } from "@/store/recipe-context";
 import Image from "next/image";
-import { useRouter } from "next/router";
 // import qs from "query-string";
 const CategoryBox = (props, selected) => {
 
+  const {fetchRecipesByCategory} = useRecipes();
+
   const handleCategoryClick = () => {
-    console.log("props.lable",props.lable)
-    props.onResponseData(props.lable);
+    fetchRecipesByCategory(props.lable)
+    // console.log("props.lable",props.lable)
+
+    // props.onResponseData(props.lable);
   };
   return (
     <div

@@ -339,6 +339,47 @@ export function getRecipesFromFile() {
 //   ];
 }
 
+export async function getRecipeByIngredient(ingredient) {
+  console.log("getRecipeByingredient",ingredient);
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+    const data = await response.json();
+    return data.meals;  
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;  
+  }
+
+}
+
+export async function getRecipeByName(name) {
+  console.log("getRecipeByName",name);
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+    const data = await response.json();
+    return data.meals;  
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;  
+  }
+
+}
+
+export async function getRecipeById(id) {
+  console.log("getRecipeById",id);
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const data = await response.json();
+    // console.log("getRecipeById", data.meals);
+    return data.meals;  // 确保返回 meals 数组或者 null
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;  // 在出错时返回 null，以确保返回值总是可序列化的
+  }
+
+}
+
+
 export async function getRecipesByCategory(selectedCategory) {
   console.log("getRecipesByCategory",selectedCategory);
   try {
@@ -354,6 +395,37 @@ export async function getRecipesByCategory(selectedCategory) {
 
 
 }
+
+export async function getRecipeBySearch(searchQuery) {
+  // 分别调用四个函数，每个函数接受 searchQuery 作为参数
+  const fetchByName = getRecipeByName(searchQuery);
+  const fetchById = getRecipeById(searchQuery);
+  const fetchByCategory = getRecipesByCategory(searchQuery);
+  const fetchByIngredient = getRecipeByIngredient(searchQuery);
+
+  try {
+      // 并行执行所有异步操作
+      const results = await Promise.all([fetchByName, fetchById, fetchByCategory, fetchByIngredient]);
+
+      // 合并四个数组
+      const mergedResults = results.flat().filter(item => item != null);
+      console.log("flatArray",mergedResults)
+
+      // 使用 reduce 和一个新 Map 来去重，利用 idMeal 作为键
+      const uniqueRecipes = mergedResults.reduce((acc, current) => {
+          if (!acc.map(recipe => recipe.idMeal).includes(current.idMeal)) {
+              acc.push(current);
+          }
+          return acc;
+      }, []);
+
+      return uniqueRecipes;
+  } catch (error) {
+      console.error("Error fetching recipes:", error);
+      return []; // 在错误情况下返回空数组，确保函数总是返回数组
+  }
+}
+
 
 export function saveRecipesToFile(recipes) {
   try {
@@ -386,32 +458,6 @@ export function getFilteredRecipes(dateFilter) {
       recipeDate.getFullYear() === year && recipeDate.getMonth() === month - 1
     );
   });
-}
-
-export async function getRecipeById(id) {
-  console.log("getRecipeById",id);
-  try {
-    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-    const data = await response.json();
-    // console.log("getRecipeById", data.meals);
-    return data.meals;  // 确保返回 meals 数组或者 null
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;  // 在出错时返回 null，以确保返回值总是可序列化的
-  }
-  // const recipes = await  fetch(`www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-  // .then((response) => response.json())
-  // .then((data) => {
-  //   return data.meals;
-  // })
-  // .catch((error) => {
-  //   console.error("Error fetching data:", error);
-  // });
-  // return recipes;
-
-  // const recipes = await getRecipesFromFile();
-  // const recipes = data;
-  // return recipes.find((recipe) => recipe.idMeal === id);
 }
 
 export function addRecipe(newRecipe) {

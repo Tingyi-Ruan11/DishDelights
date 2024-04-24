@@ -106,22 +106,22 @@ export const categories = [
 ];
 
 const Categories = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      const newData = await getRecipesByCategory(selectedCategory);
-      console.log("newData",newData);
-      props.onResponseData(newData);
+//   const [selectedCategory, setSelectedCategory] = useState(null);
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const newData = await getRecipesByCategory(selectedCategory);
+//       console.log("newData",newData);
+//       props.onResponseData(newData);
       
-    };
+//     };
   
-    if (selectedCategory !== null) {
-      fetchData();
-    }
-  }, [selectedCategory]);
+//     if (selectedCategory !== null) {
+//       fetchData();
+//     }
+//   }, [selectedCategory]);
 
   const handleSelectedCategory = (data) => {
-    setSelectedCategory(data);
+    // setSelectedCategory(data);
   };
 
   return (
