@@ -2,6 +2,7 @@ import { Fragment, useContext } from "react";
 
 import MainHeader from "./main-header";
 import { Nunito } from "next/font/google";
+import RecipeLogistics from "../recipe-detail/recipe-logistics";
 
 
 const font = Nunito({
@@ -15,6 +16,7 @@ function Layout(props) {
         <MainHeader />
         <main>{props.children}</main>
       </div>
+      <RecipeLogistics />
     </Fragment>
   );
 }

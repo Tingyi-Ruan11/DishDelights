@@ -82,26 +82,26 @@ function RecipeLogistics(props) {
     const ingredientMeasure = data[`strMeasure${i}`];
     if (ingredient && ingredient.trim() !== "") {
       ingredientitems.push(
-        <LogisticsItem key={`ingredients-${i}`}>
-          {classes.longText}
-        {ingredient+":"+ingredientMeasure}</LogisticsItem>
+        <LogisticsItem key={`ingredients-${i}`} className={classes.longText}>
+          {ingredient + ":" + ingredientMeasure}
+        </LogisticsItem>
       );
     }
   }
 
-  const images = image;
-  console.log("images", images);
+  // const images = image;
+  // console.log("images", images);
   return (
     <section className={classes.logistics}>
-      <div className={classes.imageGroup}>
+      {/* <div className={classes.imageGroup}>
+
         {images.map(
           (
             imageItem,
-            index // 迭代 images 数组，为每个 URL 创建一个 Image 组件
+            index        
           ) => (
             <div key={index} className={classes.image}>
-              {" "}
-              {/* 使用数组索引作为 key，但如果有更独特的标识符更好 */}
+
               <Image
                 src={`/${imageItem}`}
                 alt={imageAlt || `Image ${index}`}
@@ -112,9 +112,16 @@ function RecipeLogistics(props) {
           )
         )}
       </div>
-      <ul className={classes.list}>
-        {ingredientitems}
-      </ul>
+       */}
+      <div className={classes.image}>
+        <Image
+          src={data.strMealThumb}
+          alt={Image}
+          width={400}
+          height={400}
+        />
+      </div>
+      <ul className={classes.list}>{ingredientitems}</ul>
       {/* <ul className={classes.list}>
         <LogisticsItem>
           <time>{date}</time>
