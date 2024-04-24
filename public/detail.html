@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spicy Arrabiata Penne Recipe</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background: #f7f7f7;
+        color: #333;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    h1, h2 {
+        color: #2c3e50;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: #ecf0f1;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    li:last-child {
+        border-bottom: none;
+    }
+    .step-card, .ingredients-card {
+        border: 1px solid #ccc;
+        margin: 10px 0;
+        padding: 20px;
+        box-sizing: border-box;
+        background: #ecf0f1;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        position: relative;
+        display: none; /* initially hide all cards */
+    }
+    .expanded {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: auto;
+        z-index: 1000;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        z-index: 999;
+    }
+    .buttons {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+    button {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 3px;
+        margin-left: 5px;
+    }
+    button:hover {
+        background: #2980b9;
+    }
+</style>
+</head>
+<body>
+<div class="overlay" onclick="closeExpand()"></div>
+<div class="container">
+    <h1>Spicy Arrabiata Penne</h1>
+    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" alt="Spicy Arrabiata Penne">
+    <p><strong>Category:</strong> Vegetarian</p>
+    <p><strong>Cuisine:</strong> Italian</p>
+    <p><strong>Tags:</strong> Pasta, Curry</p>
+    <h2>Ingredients:</h2>
+    <div class="ingredients-card">
+        <ul>
+            <li>1 pound penne rigate</li>
+            <li>1/4 cup olive oil</li>
+            <li>3 cloves garlic</li>
+            <li>1 tin chopped tomatoes</li>
+            <li>1/2 teaspoon red chile flakes</li>
+            <li>1/2 teaspoon Italian seasoning</li>
+            <li>6 leaves basil</li>
+            <li>Sprinkling of Parmigiano-Reggiano</li>
+        </ul>
+    </div>
+    <h2>Instructions:</h2>
+    <div class="step-card">
+        <p>Bring a large pot of water to a boil. Add kosher salt to the boiling water, then add the pasta. Cook according to the package instructions, about 9 minutes.</p>
+        <div class="buttons">
+            <button onclick="moveSlide(1)">Next</button>
+        </div>
+    </div>
+    <div class="step-card">
+        <p>In a large skillet over medium-high heat, add the olive oil and heat until the oil starts to shimmer. Add the garlic and cook, stirring, until fragrant, 1 to 2 minutes.</p>
+        <div class="buttons">
+            <button onclick="moveSlide(-1)">Prev</button>
+            <button onclick="moveSlide(1)">Next</button>
+        </div>
+    </div>
+    <div class="step-card">
+        <p>Add the chopped tomatoes, red chile flakes, Italian seasoning and salt and pepper to taste. Bring to a boil and cook for 5 minutes.</p>
+        <div class="buttons">
+            <button onclick="moveSlide(-1)">Prev</button>
+            <button onclick="moveSlide(1)">Next</button>
+        </div>
+    </div>
+    <div class="step-card">
+        <p>Remove from the heat and add the chopped basil.</p>
+        <div class="buttons">
+            <button onclick="moveSlide(-1)">Prev</button>
+            <button onclick="moveSlide(1)">Next</button>
+        </div>
+    </div>
+    <div class="step-card">
+        <p>Drain the pasta and add it to the sauce. Garnish with Parmigiano-Reggiano flakes and more basil and serve warm.</p>
+        <div class="buttons">
+            <button onclick="moveSlide(-1)">Prev</button>
+        </div>
+    </div>
+</div>
+<script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll('.step-card');
+    const ingredientsCard = document.querySelector('.ingredients-card');
+    const overlay = document.querySelector('.overlay');
+
+    ingredientsCard.style.display = 'block'; // Show ingredients card
+
+    function moveSlide(direction) {
+        steps[currentStep].style.display = 'none';
+        currentStep = (currentStep + direction + steps.length) % steps.length;
+        steps[currentStep].style.display = 'block';
+    }
+
+    function expandCard(card) {
+        card.classList.add('expanded');
+        overlay.style.display = 'block';
+    }
+
+    function closeExpand() {
+        document.querySelector('.expanded').classList.remove('expanded');
+        overlay.style.display = 'none';
+    }
+
+    steps.forEach(step => step.style.display = 'none');
+    steps[0].style.display = 'block'; // Initially show the first step
+</script>
+</body>
+</html>

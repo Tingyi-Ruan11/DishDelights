@@ -14,7 +14,7 @@ import RecipeStepCard from '@/components/recipes/recipe-step-card';
 function HomePage(props) {
   return (
     <div>
-      {/* <RecipeStepCard /> */}
+      
       {/* <RecipeLogistics /> */}
       <Head>
         <title>Dish Delights</title>
@@ -26,7 +26,9 @@ function HomePage(props) {
       <Categories/>
       <Container>
         <RecipeList items={props.recipes} />
+        <RecipeStepCard />
       </Container>
+      
     </div>
   );
 }
