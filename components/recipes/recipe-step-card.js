@@ -79,17 +79,22 @@ const RecipeStepCard = (props) => {
   };
 
   return (
-    <div className={styles.recipeCard}>
-      <div className={styles.prev_icon}>&#10094;</div>
-      <div className={styles.next_icon}>&#10095;</div>
-      <div className={styles.step}>
-        <span>STEP {currentStep + 1}</span>
-        <span>{stepsData[currentStep]}</span>
+    <div className={styles.stepCard}>
+      <div className={styles.prev_icon} onClick={handlePrevStep}>
+        &#10094;
       </div>
-      <div className={styles.controls}>
+      
+      <div className={styles.step}>
+      <span>STEP {currentStep + 1}</span>
+      <span>{stepsData[currentStep]}</span>
+      </div>
+      <div className={styles.next_icon} onClick={handleNextStep}>
+        &#10095;
+      </div>
+      {/* <div>
         <div className={styles.prev} onClick={handlePrevStep}></div>
         <div className={styles.next} onClick={handleNextStep}></div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,25 +1,14 @@
 /* RecipeCard.module.css */
 
-.recipeCard {
-  font-size: 3rem;
-  /* width: 100%;
-    max-width: 900px;
-    margin: 0 auto; */
-  position: fixed; /* 将其固定在屏幕上 */
-  top: 80px;
-  left: 0;
-  width: 100%; /* 占据整个屏幕宽度 */
-  height: 100%; 
-  /* 占据整个屏幕高度 */
-  margin: 0;
-  padding: 0;
-  background-color: #fccb63;
+.stepCard {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
   overflow: hidden;
-  display: none; /* 默认隐藏 */
-  justify-content: center;
-  border-radius: 10px;
-  border-color: red;
-  border: 10px;
+  background-color: rgb(240, 150, 6);
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .step {
@@ -35,7 +24,7 @@
 }
 
 .controls {
-  position: absolute; /* 绝对定位 */
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -47,8 +36,8 @@
 
 .prev,
 .next {
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: 10;
   width: 50%;
   height: 100%;
   cursor: pointer;
@@ -65,13 +54,15 @@
 
 .prev_icon,
 .next_icon {
-  position: absolute;
-  top: 40%;
+  position: relative;
+  top: 50%;
   background-color: rgba(0, 0, 0, 0.2);
   color: white;
   padding: 10px;
-  font-size: 7rem;
+  font-size: 3rem;
   border-radius: 20px;
+  cursor: pointer;
+  height: 50%;
 }
 
 .prev_icon {
@@ -83,9 +74,8 @@
 }
 
 /* 媒体查询 */
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 900px) {
   .recipeCard {
     display: flex;
-    /* 当屏幕宽度小于900px时显示 */
   }
-}
+} */

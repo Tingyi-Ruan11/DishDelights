@@ -8,11 +8,12 @@ import RecipeList from '../components/recipes/recipe-list';
 import { getAllRecipes, getTwentyRandomRecipes  } from '@/dummy-recipes';
 import Categories from '@/components/ui/categories';
 import Container from '@/components/container';
+import RecipeStepCard from '@/components/recipes/recipe-step-card';
 
 function HomePage(props) {
   return (
     <div>
-      {/* <RecipeStepCard /> */}
+      
       {/* <RecipeLogistics /> */}
       <Head>
         <title>Dish Delights</title>
@@ -24,7 +25,9 @@ function HomePage(props) {
       <Categories/>
       <Container>
         <RecipeList items={props.recipes} />
+        <RecipeStepCard />
       </Container>
+      
     </div>
   );
 }
