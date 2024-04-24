@@ -1,4 +1,5 @@
 .item {
+  /* position: relative; */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   overflow: hidden;
@@ -12,10 +13,12 @@
 .item img {
   width: 100%;
   object-fit: cover;
-  height: 8rem;
+  height: 15rem;
 }
 
 .content {
+  align-items: center;
+
   width: 100%;
   padding: 0 1rem;
   text-align: center;
@@ -25,6 +28,12 @@
   margin: 0.5rem 0;
 }
 
+.summary {
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .content time {
   color: #666666;
@@ -35,6 +44,7 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .actions a {

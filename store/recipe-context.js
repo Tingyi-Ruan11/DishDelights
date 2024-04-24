@@ -27,7 +27,10 @@ export const RecipesProvider = ({ children }) => {
 
   // Fetch recipes on initial load
   useEffect(() => {
-    fetchRecommandRecipes();
+    if(recipes.length == 0){
+        fetchRecommandRecipes();
+    }
+    
   }, []);
 
   const fetchRecipesBySearch = async (query) => {
