@@ -12,6 +12,8 @@ import Container from '@/components/container';
 function HomePage(props) {
   return (
     <div>
+      {/* <RecipeStepCard /> */}
+      <RecipeLogistics />
       <Head>
         <title>Dish Delights</title>
         <meta

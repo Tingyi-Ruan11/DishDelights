@@ -2,6 +2,8 @@ import { Fragment, useContext } from "react";
 
 import MainHeader from "./main-header";
 import { Nunito } from "next/font/google";
+
+
 const font = Nunito({
   subsets: ["latin"],
 });
