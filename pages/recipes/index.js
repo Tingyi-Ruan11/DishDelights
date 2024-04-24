@@ -37,7 +37,7 @@ function AllRecipesPage(props) {
 
 export async function getStaticProps() {
   const recipes = await getAllRecipes();
-  console.log(recipes);
+  // console.log(recipes);
 
   return {
     props: {

@@ -63,8 +63,8 @@ const RecipeStepCard = (props) => {
   };
 
   const stepsData = data.strInstructions.split("\r\n");
-  console.log(stepsData);
-  console.log(stepsData[currentStep]);
+  // console.log(stepsData);
+  // console.log(stepsData[currentStep]);
 
   const handleNextStep = () => {
     if (currentStep < stepsData.length - 1) {

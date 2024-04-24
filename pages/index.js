@@ -1,48 +1,70 @@
-import Head from 'next/head';
+import Head from "next/head";
+import { useState, useEffect } from "react";
 
 // import { getFeaturedEvents } from '../helpers/api-util';
 
+import RecipeList from "../components/recipes/recipe-list";
 
-import RecipeList from '../components/recipes/recipe-list';
-
-import { getAllRecipes, getTwentyRandomRecipes  } from '@/dummy-recipes';
-import Categories from '@/components/ui/categories';
-import Container from '@/components/container';
-import RecipeLogistics from '@/components/recipe-detail/recipe-logistics';
-import RecipeStepCard from '@/components/recipes/recipe-step-card';
+import {
+  getAllRecipes,
+  getTwentyRandomRecipes,
+  getRecipesFromFile,
+} from "@/dummy-recipes";
+import Categories from "@/components/ui/categories";
+import Container from "@/components/container";
+import RecipeLogistics from "@/components/recipe-detail/recipe-logistics";
+import RecipeStepCard from "@/components/recipes/recipe-step-card";
 
 function HomePage(props) {
+  const [recipesData, setRecipesData] = useState(null);
+  //
+  const handleRecipesDataCategoriesUpdate = (data) => {
+    setRecipesData(data);
+  };
+  //  first time loding
+  useEffect(() => {
+    const fetchData = async () => {
+      // asycs operation
+      const data = await getRecipesFromFile();
+      console.log("fetchDataEffect", data);
+      // update and triger rerending 
+      setRecipesData(data);
+    };
+
+    // 调用数据获取函数
+    fetchData();
+  }, []);
+
   return (
     <div>
-      
-      {/* <RecipeLogistics /> */}
       <Head>
         <title>Dish Delights</title>
         <meta
-          name='description'
-          content='Find a lot of great Dish that allow you to evolve...'
+          name="description"
+          content="Find a lot of great Dish that allow you to evolve..."
         />
       </Head>
-      <Categories/>
+      <Categories onResponseData={handleRecipesDataCategoriesUpdate} />
       <Container>
-        <RecipeList items={props.recipes} />
+        {/* <RecipeList items={props.recipes}/> */}
+        <div>{recipesData ? <RecipeList items={recipesData} /> : <p>Loading...</p>}</div>
+        
         <RecipeStepCard />
       </Container>
-      
     </div>
   );
 }
 
-export async function getStaticProps() {
-  const featuredRecipes = await getAllRecipes();
-  
-  return {
-    props: {
-      recipes: featuredRecipes
-    },
-    revalidate: 1800,
-  };
-}
+// export async function getStaticProps() {
+//   const featuredRecipes = await getAllRecipes();
+
+//   return {
+//     props: {
+//       recipes: featuredRecipes,
+//     },
+//     revalidate: 1800,
+//   };
+// }
 
 export default HomePage;
 // =======================================================================================================================
@@ -72,7 +94,7 @@ export default HomePage;
 
 // export async function getStaticProps() {
 //   const featuredEvents = await getFeaturedEvents();
-  
+
 //   return {
 //     props: {
 //       events: featuredEvents,

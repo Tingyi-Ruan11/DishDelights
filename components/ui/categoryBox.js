@@ -2,17 +2,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 // import qs from "query-string";
 const CategoryBox = (props, selected) => {
-    // const router = useRouter();
-    // const params = useSearchParams();
 
-    // const handleClick = useCallback(() => {
-    //     let (params) {
-    //         currentQuery = qs.parse(params.toString());
-    //     }
-    //     const updatedQue
-    // },[]
-
-    // );
+  const handleCategoryClick = () => {
+    console.log("props.lable",props.lable)
+    props.onResponseData(props.lable);
+  };
   return (
     <div
       className={`
@@ -32,11 +26,24 @@ const CategoryBox = (props, selected) => {
             `}
             // ${selected ? `border-b-neutral-800` : `border-transparent` }
             // ${selected ? `text-neutral-800` : `text-neutral-500` }
+    onClick={handleCategoryClick}
     >  <div className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg">
         <Image src={props.iconURL} width={45} height={45} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/></div>
         <div className="font-meidum text-sm">{props.lable}</div>
+
     </div>
   );
 };
 
 export default CategoryBox;
+    // const router = useRouter();
+    // const params = useSearchParams();
+
+    // const handleClick = useCallback(() => {
+    //     let (params) {
+    //         currentQuery = qs.parse(params.toString());
+    //     }
+    //     const updatedQue
+    // },[]
+
+    // );

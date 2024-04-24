@@ -76,6 +76,8 @@ function RecipeLogistics(props) {
   //   dateModified: null,
   // };
   const data = props.data;
+  console.log("data!!!!!",data.strInstructions);
+
   const ingredientItems = [];
   for (let i = 1; i <= 20; i++) {
     const ingredient = data[`strIngredient${i}`];

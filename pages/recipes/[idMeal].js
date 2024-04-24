@@ -27,10 +27,7 @@ function RecipeDetailPage(props) {
         <meta name="description" content={recipe.description} />
       </Head>
       <RecipeSummary title={recipe.title} />
-      <RecipeLogistics
-        id={recipe.idMeal}
-        data = {recipe}
-      />
+      <RecipeLogistics id={recipe.idMeal} data={recipe[0]} />
       <RecipeContent>
         <p>{recipe.description}</p>
       </RecipeContent>
@@ -40,8 +37,10 @@ function RecipeDetailPage(props) {
 }
 
 export async function getStaticProps(context) {
-  console.log("StaticRecipe",context.params);
+  // console.log("StaticRecipe", context.params);
   const idMeal = context.params.idMeal;
+  // console.log("idMealgetStaticProps",idMeal);
+  // const data = context.params.data
   // const recipeId = context.params;
 
   const recipe = await getRecipeById(idMeal);
@@ -58,8 +57,10 @@ export async function getStaticPaths() {
   const recipes = await getFeaturedRecipes();
   // console.log("recipesPath",recipes);
 
-  const paths = recipes.map(recipe => ({ params: { idMeal: recipe.idMeal } }));
-  console.log("recipesPath",paths);
+  const paths = recipes.map((recipe) => ({
+    params: { idMeal: recipe.idMeal, data: recipe },
+  }));
+  // console.log("recipesPath", paths);
   return {
     paths: paths,
     fallback: "blocking",
