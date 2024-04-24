@@ -76,23 +76,46 @@ function RecipeLogistics(props) {
     dateModified: null,
   };
 
-  const ingredientitems = [];
+  const ingredientItems = [];
   for (let i = 1; i <= 20; i++) {
     const ingredient = data[`strIngredient${i}`];
     const ingredientMeasure = data[`strMeasure${i}`];
     if (ingredient && ingredient.trim() !== "") {
-      ingredientitems.push(
+      ingredientItems.push(
         <LogisticsItem key={`ingredients-${i}`} className={classes.longText}>
           {ingredient + ":" + ingredientMeasure}
         </LogisticsItem>
       );
     }
   }
+  const instructionsData = data.strInstructions.split("\r\n");
+  // const instructionsItems= [];
+  // for(let j = 1; j <= instructionsData.length; j++){
+
+  // }
 
   // const images = image;
   // console.log("images", images);
   return (
     <section className={classes.logistics}>
+      <div className={classes.image}>
+        {/* <Image
+          src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
+          alt={Image}
+          width={400}
+          height={400}
+        /> */}
+      </div>
+      <LogisticsItem>Instructions:</LogisticsItem>
+      <ul className={classes.list}>
+        {instructionsData.map((item) => {
+          <LogisticsItem className={classes.longText} key={item}>
+            {item}
+          </LogisticsItem>;
+        })}
+      </ul>
+      <LogisticsItem>Ingredient:</LogisticsItem>
+      <ul className={classes.list}>{ingredientItems}</ul>
       {/* <div className={classes.imageGroup}>
 
         {images.map(
@@ -113,15 +136,6 @@ function RecipeLogistics(props) {
         )}
       </div>
        */}
-      <div className={classes.image}>
-        <Image
-          src={data.strMealThumb}
-          alt={Image}
-          width={400}
-          height={400}
-        />
-      </div>
-      <ul className={classes.list}>{ingredientitems}</ul>
       {/* <ul className={classes.list}>
         <LogisticsItem>
           <time>{date}</time>

@@ -8,11 +8,13 @@ import RecipeList from '../components/recipes/recipe-list';
 import { getAllRecipes } from '@/dummy-recipes';
 import Categories from '@/components/ui/categories';
 import RecipeStepCard from '@/components/recipes/recipe-step-card';
+import RecipeLogistics from '@/components/recipe-detail/recipe-logistics';
 
 function HomePage(props) {
   return (
     <div>
-      <RecipeStepCard />
+      {/* <RecipeStepCard /> */}
+      <RecipeLogistics />
       <Head>
         <title>Dish Delights</title>
         <meta
