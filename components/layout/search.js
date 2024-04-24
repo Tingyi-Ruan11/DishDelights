@@ -35,7 +35,7 @@ const Search = () => {
           onChange={handleChange}
           onKeyPress={handleKeyPress}
         />
-        <div className="p-2 bg-amber-600 rounded-full text-white">
+        <div className="p-2 bg-amber-600 rounded-full text-white" onClick={handleSearch}>
           <BiSearch size={18} />
         </div>
       </div>

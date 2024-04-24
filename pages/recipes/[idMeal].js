@@ -30,7 +30,7 @@ function RecipeDetailPage(props) {
       <RecipeLogistics id={recipe.idMeal} data={recipe[0]} />
       <RecipeContent>
         <p>{recipe.description}</p>
-      </RecipeContent> */}
+      </RecipeContent> 
       {/* <Comments recipeId={recipe.recipeId} /> */}
     </Fragment>
   );
