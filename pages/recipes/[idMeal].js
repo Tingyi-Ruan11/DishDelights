@@ -20,6 +20,7 @@ function RecipeDetailPage(props) {
     );
   }
 
+  
   return (
     <Fragment>
       <Head>
