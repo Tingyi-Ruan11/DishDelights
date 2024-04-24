@@ -8,6 +8,8 @@ import RecipeList from '../components/recipes/recipe-list';
 import { getAllRecipes, getTwentyRandomRecipes  } from '@/dummy-recipes';
 import Categories from '@/components/ui/categories';
 import Container from '@/components/container';
+import RecipeLogistics from '@/components/recipe-detail/recipe-logistics';
+import RecipeStepCard from '@/components/recipes/recipe-step-card';
 
 function HomePage(props) {
   return (

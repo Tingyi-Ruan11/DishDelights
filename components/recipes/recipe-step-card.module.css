@@ -82,6 +82,7 @@
   right: 0;
 }
 
+
 /* 媒体查询 */
 @media screen and (max-width: 1200px) {
   .recipeCard {

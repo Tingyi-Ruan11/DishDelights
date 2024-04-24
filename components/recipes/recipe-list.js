@@ -9,13 +9,8 @@ function RecipeList(props) {
     <div className='grid grid-cols-1 min-[540px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-8'>
       {items.map((recipe) => (
         <RecipeItem
-          key={recipe.recipeId}
-          recipeId={recipe.recipeId}
-          title={recipe.title}
-          description={recipe.description}
-          instructions={recipe.date}
-          category={recipe.category}
-          image={recipe.imageUrls}
+          key={recipe.idMeal}
+          data={recipe}
         />
       ))}
     </div>

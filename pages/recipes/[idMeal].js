@@ -28,15 +28,8 @@ function RecipeDetailPage(props) {
       </Head>
       <RecipeSummary title={recipe.title} />
       <RecipeLogistics
-        title={recipe.title}
-        date={recipe.date}
-        id={recipe.recipeId}
-        description={recipe.description}
-        ingredients={recipe.ingredients}
-        instructions={recipe.instructions}
-        category={recipe.category}
-        image={recipe.imageUrls}
-        imageAlt={recipe.title}
+        id={recipe.idMeal}
+        data = {recipe}
       />
       <RecipeContent>
         <p>{recipe.description}</p>
@@ -48,10 +41,10 @@ function RecipeDetailPage(props) {
 
 export async function getStaticProps(context) {
   console.log("StaticRecipe",context.params);
-  const recipeId = context.params.recipeId;
+  const idMeal = context.params.idMeal;
   // const recipeId = context.params;
 
-  const recipe = await getRecipeById(recipeId);
+  const recipe = await getRecipeById(idMeal);
 
   return {
     props: {
@@ -65,7 +58,7 @@ export async function getStaticPaths() {
   const recipes = await getFeaturedRecipes();
   // console.log("recipesPath",recipes);
 
-  const paths = recipes.map(recipe => ({ params: { recipeId: recipe.recipeId } }));
+  const paths = recipes.map(recipe => ({ params: { idMeal: recipe.idMeal } }));
   console.log("recipesPath",paths);
   return {
     paths: paths,

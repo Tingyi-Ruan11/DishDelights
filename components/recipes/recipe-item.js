@@ -5,32 +5,25 @@ import Button from "../ui/button";
 
 import ArrowRightIcon from "../icons/arrow-right-icon";
 import classes from "./recipe-item.module.css";
-import InformationCircle from "../icons/information-circle";
 
 function RecipeItem(props) {
-  const { title, image, recipeId, description, instructions, category } =
-    props;
+  // const { title, image, recipeId, description, instructions, category } =
+  //   props;
 
-  // const humanReadableDate = new Date(date).toLocaleDateString("en-US", {
-  //   day: "numeric",
-  //   month: "long",
-  //   year: "numeric",
-  // });
-  // const formattedAddress = location.replace(', ', '\n');
-  // console.log("recipeId",recipeId);
-  // const recipeIdStr = String(recipeId);
-  // console.log("recipeIdStr", recipeIdStr);
-  const exploreLink = `/recipes/${recipeId}`;
+
+  const data = props.data;
+
+  const exploreLink = `/recipes/${data.idMeal}`;
 
   return (
     <li className={classes.item}>
-      <Image src={'/' + image[0]} alt={title} width={250} height={160} />
+      <Image src={data.strMealThumb} alt={data.strMeal} width={250} height={160} />
       {/* {image.map((image, index) => (
         <Image src={"/" + image} alt={title} width={250} height={160} />
       ))} */}
       <div className={classes.content}>
         <div className={classes.summary}>
-          <h2 className="font-bold ">{title}</h2>
+          <h2 className="font-bold ">{data.strMeal}</h2>
           {/* <div className={classes.address}>
             <div>{`Category:`+category}</div>
           </div> */}
