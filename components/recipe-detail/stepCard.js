@@ -38,6 +38,8 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
   };
 
   const sentences = step.split(/(?<=[.!?])\s+/);
+  const filteredSentences = sentences.filter(sentence => sentence.trim().length >= 4);
+
 
   return (
     <div>      <div
@@ -49,7 +51,7 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
     <div className={`${isExpanded ? `fixed bottom-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-75 h-50   z-30 w-full  p-10 border-transparent` : ""} `}>
 
       <div
-        className=" p-5 rounded-lg shadow my-2 flex items-center cursor-pointer transition-all duration-300 ${isExpanded ? 'fixed z-50 bg-amber-100 m-0 max-h-full w-full text-xl' : 'bg-grey-200 z-50 relative text-base'}"
+        className=" p-5 rounded-lg shadow my-2 flex items-center cursor-pointer transition-all duration-300 ${isExpanded ? 'fixed z-50  bg-orange-100 m-0 max-h-full w-full text-xl' : 'bg-grey-200 z-50 relative text-base'}"
         onMouseEnter={() => setShowButtons(true)}
         onMouseLeave={() => setShowButtons(false)}
         onClick={cardClick}
@@ -93,7 +95,7 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
         >
           <div className="flex items-center gap-2">
           <BsMagic /><h5 className="font-bold">Step {index + 1}</h5></div>
-          {sentences.map((sentence, index) => (
+          {filteredSentences.map((sentence, index) => (
                                 <div className="w-full flex  items-start" >
                                   
                                 <li key={index}>{sentence}</li> 

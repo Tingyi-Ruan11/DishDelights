@@ -5,6 +5,7 @@ import Container from "../container";
 import Logo from "./logo";
 import Search from "./search";
 import { PiSmileyWinkFill } from "react-icons/pi";
+import { FaRegSmileWink } from "react-icons/fa";
 
 function MainHeader() {
   return (
@@ -16,8 +17,9 @@ function MainHeader() {
               <Logo />
               <Search />
               <div className="flex items-center gap-1">
-              <p className="font-bold text-center">Make Every Dish Delightful!</p>
-              <PiSmileyWinkFill size={30} /></div>
+              <p className="font-bold text-center ">Make Every Dish Delightful!</p>
+              <PiSmileyWinkFill size={30} className=" hidden md:block" />
+              <FaRegSmileWink size={26} className=" hidden md:block" /></div>
             </div>
           </Container>
         </div>

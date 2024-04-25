@@ -15,6 +15,7 @@ import Container from "@/components/container";
 import RecipeLogistics from "@/components/recipe-detail/recipe-logistics";
 import RecipeStepCard from "@/components/recipes/recipe-step-card";
 import { useRecipes } from "@/store/recipe-context";
+import Footer from "@/components/layout/footer";
 
 function HomePage(props) {
 
@@ -51,10 +52,9 @@ function HomePage(props) {
       <Categories onResponseData={handleRecipesDataCategoriesUpdate} />
       <Container>
         {/* <RecipeList items={props.recipes}/> */}
-        <div>{recipes ? <RecipeList items={recipes} /> : <p>Loading...</p>}</div>
-        
-        <RecipeStepCard />
+        <div className="mt-0">{recipes ? <RecipeList items={recipes} /> : <p>Loading...</p>}</div>
       </Container>
+      <Footer/>
     </div>
   );
 }

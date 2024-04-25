@@ -16,9 +16,11 @@ import { FaBowlFood } from "react-icons/fa6";
 
 import Container from "../container";
 import StepCard from "./stepCard";
-import { useState } from 'react';
+import { useState } from "react";
 import ControlButtons from "./controlButton";
 import { CgBowl } from "react-icons/cg";
+import { useRouter } from "next/router";
+import { IoIosArrowBack } from "react-icons/io";
 
 function RecipeLogistics(props) {
   // const {
@@ -93,7 +95,6 @@ function RecipeLogistics(props) {
   //   dateModified: null,
   // };
   const data = props.data;
-  console.log("data!!!!!",data.strInstructions);
 
   const ingredientItems = [];
   for (let i = 1; i <= 20; i++) {
@@ -117,18 +118,27 @@ function RecipeLogistics(props) {
 
     // 每三个句子组合成一个新的指令
     for (let i = 0; i < sentences.length; i += 3) {
-        const limitedSentences = sentences.slice(i, i + 3); // 从i开始，取三个句子
-        const truncatedInstruction = limitedSentences.join(' ');
-        // 将处理后的指令添加到数组
+      const limitedSentences = sentences.slice(i, i + 3); // 从i开始，取三个句子
+      const truncatedInstruction = limitedSentences.join(" ");
+      // 将处理后的指令添加到数组
+      if (truncatedInstruction != "") {
         instructionsItems.push(truncatedInstruction);
+      }
     }
   }
 
   const [currentStep, setCurrentStep] = useState(0);
 
   const moveSlide = (direction) => {
-      const newStep = (currentStep + direction + instructionsItems.length) % instructionsItems.length;
-      setCurrentStep(newStep);
+    const newStep =
+      (currentStep + direction + instructionsItems.length) %
+      instructionsItems.length;
+    setCurrentStep(newStep);
+  };
+  const router = useRouter();
+
+  const handleReturn = () => {
+    router.push("/");
   };
 
   // const images = image;
@@ -136,11 +146,15 @@ function RecipeLogistics(props) {
   return (
     <section className={classes.logistics}>
       <div className="flex text-left">
-        <h1 className="flex items-center font-bold gap-2 text-xl min-[800px]:text-2xl">
-        <PiBowlFoodBold size={23}/>
-        <FaBowlFood size={20}/>
+        <h1
+          
+          className="flex items-center font-bold gap-2 text-xl min-[800px]:text-2xl"
+        >
+          <IoIosArrowBack onClick={handleReturn} color="grey" className="cursor-pointer hover:fill-black"/>
+          <PiBowlFoodBold size={23} />
+          <FaBowlFood size={20} />
 
-        {data.strMeal}
+          {data.strMeal}
         </h1>
       </div>
       <div className={classes.image}>
@@ -159,30 +173,32 @@ function RecipeLogistics(props) {
       </div>
       {/* <p><strong>Tags:</strong> {data.strTags}</p> */}
       <div className="flex items-center gap-1">
-      <TbMilk />
-      <h2>
-        <strong>Ingredients:</strong>
-      </h2>
+        <TbMilk />
+        <h2>
+          <strong>Ingredients:</strong>
+        </h2>
       </div>
 
-      <ul className="list-none p-0 grid grid-cols-1 min-[700px]:grid-cols-2">{ingredientItems}</ul>
+      <ul className="list-none p-0 grid grid-cols-1 min-[700px]:grid-cols-2">
+        {ingredientItems}
+      </ul>
       <div className="flex items-center gap-1">
-      <FcIdea />
-      <h2>
-        <strong>Instructions:</strong>
-      </h2>
+        <FcIdea />
+        <h2>
+          <strong>Instructions:</strong>
+        </h2>
       </div>
       {/* <div>
         <ul className="list-none p-0">{instructionsItems}</ul>
       </div> */}
       {/* <StepCard step={instructionsItems[currentStep]} index={currentStep} /> */}
       <StepCard
-                step={instructionsItems[currentStep]}
-                index={currentStep}
-                prevStep={() => moveSlide(-1)}
-                nextStep={() => moveSlide(1)}
-                totalSteps={instructionsItems.length}
-            />
+        step={instructionsItems[currentStep]}
+        index={currentStep}
+        prevStep={() => moveSlide(-1)}
+        nextStep={() => moveSlide(1)}
+        totalSteps={instructionsItems.length}
+      />
       {/* <ControlButtons moveSlide={moveSlide} currentStep={currentStep} totalSteps={instructionsItems.length} /> */}
       {/* <div className={classes.imageGroup}>
 
