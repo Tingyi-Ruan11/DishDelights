@@ -18,17 +18,19 @@ const CategoryBox = (props) => {
                 gap-3
                 p-3 
                 border-b-2 
-                hover:text-neutral-800 
+                hover: text-neutral-950
+                hover:font-semibold
                 transition 
                 curcor-pointer 
                 max-w-50 
                 min-w-20
+                
                 ${selected ? `border-b-neutral-800` : `border-transparent` }
-                ${selected ? `text-neutral-800` : `text-neutral-500` }
+                ${selected ? `text-neutral-950 font-semibold` : `text-neutral-500` }
             `}
     onClick={handleCategoryClick}
     >  <div className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg">
-        <Image src={props.iconURL} width={45} height={45} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/></div>
+        <Image src={props.iconURL} width={45} height={45} alt={props.lable} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/></div>
         <div className="font-meidum text-sm">{props.lable}</div>
 
     </div>

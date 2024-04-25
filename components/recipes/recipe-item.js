@@ -5,6 +5,7 @@ import Button from "../ui/button";
 
 import ArrowRightIcon from "../icons/arrow-right-icon";
 import classes from "./recipe-item.module.css";
+import { IoIosArrowForward } from "react-icons/io";
 
 function RecipeItem(props) {
   const data = props.data;
@@ -22,7 +23,8 @@ function RecipeItem(props) {
           <Button link={exploreLink}>
             <span>Explore</span>
             <span className={classes.icon}>
-              <ArrowRightIcon />
+              {/* <ArrowRightIcon /> */}
+              <IoIosArrowForward />
             </span>
           </Button>
         </div>

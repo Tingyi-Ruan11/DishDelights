@@ -1,20 +1,21 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 // import { getFeaturedEvents } from '../helpers/api-util';
 
 import RecipeList from "../components/recipes/recipe-list";
 
-import {
-  getAllRecipes,
-  getTwentyRandomRecipes,
-  getRecipesFromFile,
-} from "@/dummy-recipes";
+// import {
+//   getAllRecipes,
+//   getTwentyRandomRecipes,
+//   getRecipesFromFile,
+// } from "@/dummy-recipes";
 import Categories from "@/components/ui/categories";
 import Container from "@/components/container";
-import RecipeLogistics from "@/components/recipe-detail/recipe-logistics";
-import RecipeStepCard from "@/components/recipes/recipe-step-card";
+// import RecipeLogistics from "@/components/recipe-detail/recipe-logistics";
+// import RecipeStepCard from "@/components/recipes/recipe-step-card";
 import { useRecipes } from "@/store/recipe-context";
+import Footer from "@/components/layout/footer";
 
 function HomePage(props) {
 
@@ -28,14 +29,15 @@ function HomePage(props) {
           name="description"
           content="Find a lot of great Dish that allow you to evolve..."
         />
+        {/* <link rel="icon" href="../public/favicon.ico" /> */}
+
       </Head>
       <Categories/>
       <Container>
         {/* <RecipeList items={props.recipes}/> */}
-        <div>{recipes ? <RecipeList items={recipes} /> : <p>Loading...</p>}</div>
-        
-        <RecipeStepCard />
+        <div className="mt-0">{recipes ? <RecipeList items={recipes} /> : <p>Loading...</p>}</div>
       </Container>
+      <Footer/>
     </div>
   );
 }

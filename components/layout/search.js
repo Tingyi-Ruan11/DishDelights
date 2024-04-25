@@ -30,13 +30,13 @@ const Search = () => {
       <div className="flex flex-row items-center text-justify w-full">
         <input
           type="text"
-          placeholder="any name"
+          placeholder="Find your meal"
           className="border-none w-full focus:outline-none text-center"
           value={inputValue}
           onChange={handleChange}
           onKeyPress={handleKeyPress}
         />
-        <div className="p-2 bg-amber-600 rounded-full text-white" onClick={handleSearch}>
+        <div className="p-2 bg-amber-600 rounded-full text-white hover:bg-amber-700" onClick={handleSearch}>
           <BiSearch size={18} />
         </div>
       </div>

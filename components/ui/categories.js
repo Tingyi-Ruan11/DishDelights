@@ -114,8 +114,8 @@ const Categories = (props) => {
 
   return (
     <Container>
-      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
-        {categories && categories.length > 0 && categories.map((items) => (
+      <div className="pt-8 flex flex-row items-center justify-between overflow-x-auto no-scrollbar ">
+        {categories.map((items) => (
           <CategoryBox
             key={items.strCategory}
             lable={items.strCategory}
