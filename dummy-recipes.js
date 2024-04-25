@@ -21,6 +21,18 @@ export function getRecipesFromFile() {
     });
 }
 
+export function getCategories() {
+  return fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data.categories;
+
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+}
+
 export function getRandomRecipes() {
   return fetch(`https://www.themealdb.com/api/json/v2/9973533/randomselection.php`)
     .then((response) => response.json())
@@ -93,21 +105,20 @@ export async function getRecipesByCategory(selectedCategory) {
 }
 
 export async function getRecipeBySearch(searchQuery) {
-  // 分别调用四个函数，每个函数接受 searchQuery 作为参数
   const fetchByName = getRecipeByName(searchQuery);
   const fetchById = getRecipeById(searchQuery);
   const fetchByCategory = getRecipesByCategory(searchQuery);
   const fetchByIngredient = getRecipeByIngredient(searchQuery);
 
   try {
-      // 并行执行所有异步操作
+      // executes parallel requests
       const results = await Promise.all([fetchByName, fetchById, fetchByCategory, fetchByIngredient]);
 
-      // 合并四个数组
+      // merging
       const mergedResults = results.flat().filter(item => item != null);
       console.log("flatArray",mergedResults)
 
-      // 使用 reduce 和一个新 Map 来去重，利用 idMeal 作为键
+      // deduplication
       const uniqueRecipes = mergedResults.reduce((acc, current) => {
           if (!acc.map(recipe => recipe.idMeal).includes(current.idMeal)) {
               acc.push(current);
@@ -118,7 +129,7 @@ export async function getRecipeBySearch(searchQuery) {
       return uniqueRecipes;
   } catch (error) {
       console.error("Error fetching recipes:", error);
-      return []; // 在错误情况下返回空数组，确保函数总是返回数组
+      return []; 
   }
 }
 

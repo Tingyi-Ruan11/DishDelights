@@ -53,7 +53,7 @@ export async function getStaticPaths() {
   const recipes = await getFeaturedRecipes();
 
   const paths = recipes.map((recipe) => ({
-    params: { idMeal: recipe.idMeal, data: recipe },
+    params: { idMeal: recipe.idMeal },
   }));
   return {
     paths: paths,

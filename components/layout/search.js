@@ -5,11 +5,10 @@ import { useRouter } from 'next/router';
 
 const Search = () => {
 
-  const [inputValue, setInputValue] = useState(''); // 管理输入框的状态
-  const { fetchRecipesBySearch } = useRecipes(); // 从 Context 获取搜索方法
+  const [inputValue, setInputValue] = useState(''); 
+  const { fetchRecipesBySearch } = useRecipes(); 
   const router = useRouter();
 
-   // 处理输入变化
    const handleChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -20,7 +19,6 @@ const Search = () => {
     router.push('/');
   };
 
-  // 处理按键事件
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleSearch();

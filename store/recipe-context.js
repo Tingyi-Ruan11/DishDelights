@@ -2,7 +2,8 @@ import React, { createContext, useContext, useState,useEffect } from "react";
 import {
   getRecipesByCategory,
   getRecipeBySearch,
-  getRandomRecipes
+  getRandomRecipes,
+  getCategories
 } from "@/dummy-recipes";
 
 const RecipesContext = createContext(null);
@@ -13,15 +14,18 @@ export function useRecipes() {
 
 export const RecipesProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
+  const [categories,setCategories] = useState([]);
   const [isGetRandom, setIsGetRandom] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState();
-
+// re-rendered once the data fetch is successful
   useEffect(() => {
     if(isGetRandom){
         fetchRecommandRecipes();
         setIsGetRandom(!isGetRandom)
     }
   }, [isGetRandom]);
+
+
 
   const fetchRecommandRecipes = async () => {
     try {
@@ -37,7 +41,22 @@ export const RecipesProvider = ({ children }) => {
         fetchRecommandRecipes();
     }
     
+    if(categories === undefined || categories.length == 0){
+      console.log("contextCategories",categories,"----------");
+      fetchCategories();
+      console.log("contextCategories",categories,"-----+++-----");
+    }
+    
   }, []);
+
+  const fetchCategories = async () => {
+    const categoriesData = await getCategories();
+     
+    setCategories(categoriesData);
+  };
+
+
+
 
   const fetchRecipesBySearch = async (query) => {
     const data = await getRecipeBySearch(query);
@@ -60,7 +79,7 @@ export const RecipesProvider = ({ children }) => {
 
   return (
     <RecipesContext.Provider
-      value={{ recipes, fetchRecipesBySearch, fetchRecipesByCategory,fetchRecommandRecipes,setIsGetRandom,selectedCategory,setSelectedCategory}}
+      value={{ recipes, categories, fetchRecipesBySearch, fetchRecipesByCategory,fetchRecommandRecipes,setIsGetRandom,selectedCategory,setSelectedCategory}}
     >
       {children}
     </RecipesContext.Provider>

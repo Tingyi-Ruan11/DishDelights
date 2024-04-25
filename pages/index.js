@@ -19,25 +19,6 @@ import { useRecipes } from "@/store/recipe-context";
 function HomePage(props) {
 
   const { recipes,fetchRecommandRecipes } = useRecipes();
-  // const [recipesData, setRecipesData] = useState(null);
-
-  const handleRecipesDataCategoriesUpdate = (data) => {
-    // setRecipesData(data);
-  };
-
-  // //  first time loding
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     // asycs operation
-  //     const data = await getRecipesFromFile();
-  //     console.log("fetchDataEffect", data);
-  //     // update and triger rerending 
-  //     setRecipesData(data);
-  //   };
-
-  //   // 调用数据获取函数
-  //   fetchData();
-  // }, []);
 
   return (
     <div>
@@ -48,7 +29,7 @@ function HomePage(props) {
           content="Find a lot of great Dish that allow you to evolve..."
         />
       </Head>
-      <Categories onResponseData={handleRecipesDataCategoriesUpdate} />
+      <Categories/>
       <Container>
         {/* <RecipeList items={props.recipes}/> */}
         <div>{recipes ? <RecipeList items={recipes} /> : <p>Loading...</p>}</div>
@@ -58,17 +39,6 @@ function HomePage(props) {
     </div>
   );
 }
-
-// export async function getStaticProps() {
-//   const featuredRecipes = await getAllRecipes();
-
-//   return {
-//     props: {
-//       recipes: featuredRecipes,
-//     },
-//     revalidate: 1800,
-//   };
-// }
 
 export default HomePage;
 // =======================================================================================================================
