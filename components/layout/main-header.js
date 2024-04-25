@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "../container";
 import Logo from "./logo";
 import Search from "./search";
+import { PiSmileyWinkFill } from "react-icons/pi";
 
 function MainHeader() {
   return (
@@ -14,7 +15,9 @@ function MainHeader() {
             <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
               <Logo />
               <Search />
+              <div className="flex items-center gap-1">
               <p className="font-bold text-center">Make Every Dish Delightful!</p>
+              <PiSmileyWinkFill size={30} /></div>
             </div>
           </Container>
         </div>

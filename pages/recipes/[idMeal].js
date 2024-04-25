@@ -30,7 +30,7 @@ function RecipeDetailPage(props) {
       {/* <RecipeSummary imgurl={recipe.strMealThumb} /> */}
       <RecipeLogistics
         id={recipe.idMeal}
-        data = {recipe}
+        data = {recipe[0]}
       />
       {/* <RecipeContent>
         <p>{recipe.description}</p>

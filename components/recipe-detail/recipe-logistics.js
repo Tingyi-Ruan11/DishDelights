@@ -18,6 +18,7 @@ import Container from "../container";
 import StepCard from "./stepCard";
 import { useState } from 'react';
 import ControlButtons from "./controlButton";
+import { CgBowl } from "react-icons/cg";
 
 function RecipeLogistics(props) {
   // const {
@@ -100,25 +101,27 @@ function RecipeLogistics(props) {
     const ingredientMeasure = data[`strMeasure${i}`];
     if (ingredient && ingredient.trim() !== "") {
       ingredientItems.push(
-        <li key={`ingredients-${i}`} className="mb-2 flex items-center gap-1">
+        <li key={`ingredients-${i}`} className="mb-2 flex items-center gap-2">
           {/* <HiOutlineCheck /> */}
-          <FcCheckmark />
+          <CgBowl />
           {ingredient + ":     " + ingredientMeasure}
         </li>
       );
     }
   }
   const instructionsData = data.strInstructions.split("\r\n");
-  console.log(instructionsData);
   const instructionsItems = [];
   for (let j = 0; j < instructionsData.length; j++) {
     const instruction = instructionsData[j];
-    if (instruction!=""){
-    instructionsItems.push(
-      // <div key={`instructions-${j}`} className={classes.longText}>
-        instruction
-      // {/* </div> */}
-    );}
+    const sentences = instruction.split(/(?<=[.!?])\s+/);
+
+    // 每三个句子组合成一个新的指令
+    for (let i = 0; i < sentences.length; i += 3) {
+        const limitedSentences = sentences.slice(i, i + 3); // 从i开始，取三个句子
+        const truncatedInstruction = limitedSentences.join(' ');
+        // 将处理后的指令添加到数组
+        instructionsItems.push(truncatedInstruction);
+    }
   }
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -134,8 +137,8 @@ function RecipeLogistics(props) {
     <section className={classes.logistics}>
       <div className="flex text-left">
         <h1 className="flex items-center font-bold gap-2 text-xl min-[800px]:text-2xl">
-        <PiBowlFoodBold />
-        <FaBowlFood />
+        <PiBowlFoodBold size={23}/>
+        <FaBowlFood size={20}/>
 
         {data.strMeal}
         </h1>
