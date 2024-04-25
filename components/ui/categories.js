@@ -1,3 +1,4 @@
+import { useRecipes } from "@/store/recipe-context";
 import Container from "../container";
 import CategoryBox from "./categoryBox";
 import { useState } from "react";
@@ -105,7 +106,8 @@ export const categories = [
 ];
 
 const Categories = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState();
+  const {selectedCategory,setSelectedCategory} = useRecipes();
+  // const [selectedCategory, setSelectedCategory] = useState();
   const handleSelectedCategory = (category) => {
     setSelectedCategory(category)
 
