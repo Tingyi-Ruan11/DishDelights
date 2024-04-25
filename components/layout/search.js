@@ -26,7 +26,7 @@ const Search = () => {
   };
 
   return (
-    <div className="text-sm font-semibold border-[1px] w-1/3 py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer">
+    <div className="text-sm font-semibold border-[1px] w-1/3 py-2 rounded-full shadow-sm hover:shadow-md transition">
       <div className="flex flex-row items-center text-justify w-full">
         <input
           type="text"
@@ -36,7 +36,7 @@ const Search = () => {
           onChange={handleChange}
           onKeyPress={handleKeyPress}
         />
-        <div className="p-2 bg-amber-600 rounded-full text-white hover:bg-amber-700" onClick={handleSearch}>
+        <div className="p-2 bg-amber-600 rounded-full text-white hover:bg-amber-700 cursor-pointer" onClick={handleSearch}>
           <BiSearch size={18} />
         </div>
       </div>
