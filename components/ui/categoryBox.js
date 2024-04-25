@@ -30,7 +30,7 @@ const CategoryBox = (props) => {
             `}
     onClick={handleCategoryClick}
     >  <div className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg">
-        <Image src={props.iconURL} width={45} height={45} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/></div>
+        <Image src={props.iconURL} width={45} height={45} alt={props.lable} className="h-45 rounded-full bg-transparent hover:ring-4 hover:ring-amber-300 shadow-lg"/></div>
         <div className="font-meidum text-sm">{props.lable}</div>
 
     </div>
