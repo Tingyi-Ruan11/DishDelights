@@ -38,7 +38,7 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
   };
 
   const sentences = step.split(/(?<=[.!?])\s+/);
-  const filteredSentences = sentences.filter(sentence => sentence.trim().length >= 4);
+  const filteredSentences = sentences.filter(sentence => sentence.trim().length >= 7);
 
 
   return (
