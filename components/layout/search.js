@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const Search = () => {
 
   const [inputValue, setInputValue] = useState(''); 
-  const { fetchRecipesBySearch,setSelectedCategory } = useRecipes(); 
+  const { fetchRecipesBySearch } = useRecipes(); 
   const router = useRouter();
 
    const handleChange = (event) => {
@@ -16,7 +16,6 @@ const Search = () => {
   
   const handleSearch = () => {
     fetchRecipesBySearch(inputValue);
-    setSelectedCategory(null)
     router.push('/');
   };
 
@@ -37,7 +36,7 @@ const Search = () => {
           onChange={handleChange}
           onKeyPress={handleKeyPress}
         />
-        <div className="p-2 bg-amber-600 rounded-full text-white hover:bg-amber-700 cursor-pointer" onClick={handleSearch}>
+        <div className="p-2 bg-amber-600 rounded-full text-white hover:bg-amber-700 cursor-pointer mr-2" onClick={handleSearch}>
           <BiSearch size={18} />
         </div>
       </div>

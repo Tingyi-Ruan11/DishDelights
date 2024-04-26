@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Logo = () => {
-  const { setIsGetRandom, setSelectedCategory } = useRecipes();
+  const { setIsGetRandom } = useRecipes();
   const handleClick = () => {
-    setSelectedCategory(null);
     setIsGetRandom(true);
   };
 

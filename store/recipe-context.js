@@ -31,6 +31,7 @@ export const RecipesProvider = ({ children }) => {
     try {
       const data = await getRandomRecipes();
       setRecipes(data);
+      setSelectedCategory(null)
     } catch (error) {
       console.error("Failed to fetch recipes", error);
     }
@@ -58,7 +59,7 @@ export const RecipesProvider = ({ children }) => {
 
   const fetchRecipesBySearch = async (query) => {
     const data = await getRecipeBySearch(query);
-     
+    setSelectedCategory(null)
     setRecipes(data);
   };
 
