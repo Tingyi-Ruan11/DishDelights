@@ -42,9 +42,7 @@ export const RecipesProvider = ({ children }) => {
     }
     
     if(categories === undefined || categories.length == 0){
-      console.log("contextCategories",categories,"----------");
       fetchCategories();
-      console.log("contextCategories",categories,"-----+++-----");
     }
     
   }, []);

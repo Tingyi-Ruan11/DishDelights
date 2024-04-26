@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const Search = () => {
 
   const [inputValue, setInputValue] = useState(''); 
-  const { fetchRecipesBySearch } = useRecipes(); 
+  const { fetchRecipesBySearch,setSelectedCategory } = useRecipes(); 
   const router = useRouter();
 
    const handleChange = (event) => {
@@ -16,6 +16,7 @@ const Search = () => {
   
   const handleSearch = () => {
     fetchRecipesBySearch(inputValue);
+    setSelectedCategory(null)
     router.push('/');
   };
 
