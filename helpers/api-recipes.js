@@ -22,7 +22,6 @@ export function getRandomRecipes() {
 }
 
 export async function getRecipeByIngredient(ingredient) {
-  console.log("getRecipeByingredient",ingredient);
   try {
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
     const data = await response.json();
@@ -35,7 +34,6 @@ export async function getRecipeByIngredient(ingredient) {
 }
 
 export async function getRecipeByName(name) {
-  console.log("getRecipeByName",name);
   try {
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
     const data = await response.json();
@@ -48,7 +46,6 @@ export async function getRecipeByName(name) {
 }
 
 export async function getRecipeById(id) {
-  console.log("getRecipeById",id);
   try {
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
     const data = await response.json();
@@ -62,12 +59,9 @@ export async function getRecipeById(id) {
 
 
 export async function getRecipesByCategory(selectedCategory) {
-  console.log("getRecipesByCategory",selectedCategory);
   try {
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`);
-    console.log("selectedCategoryResponse", response);
     const data = await response.json();
-    console.log("selectedCategory", data.meals);
     return data.meals;  
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -89,7 +83,6 @@ export async function getRecipeBySearch(searchQuery) {
 
       // merging
       const mergedResults = results.flat().filter(item => item != null);
-      console.log("flatArray",mergedResults)
 
       // deduplication
       const uniqueRecipes = mergedResults.reduce((acc, current) => {
