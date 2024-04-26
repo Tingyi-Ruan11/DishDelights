@@ -78,7 +78,7 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
           <div className="flex items-center gap-2">
           <BsMagic /><h5 className="font-bold">Step {index + 1}</h5></div>
           {filteredSentences.map((sentence, index) => (
-                                <div className="w-full flex  items-start" >
+                                <div className="w-full flex  items-start" key={index}>
                                   
                                 <li key={index}>{sentence}</li> 
                                 </div>
