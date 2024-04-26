@@ -13,7 +13,7 @@ function RecipeItem(props) {
   const exploreLink = `/recipes/${data.idMeal}`;
 
   return (
-    <li className={classes.item}>
+    <div className={classes.item}>
       <Image src={data.strMealThumb} alt={data.strMeal} width={250} height={160} />
       <div className={classes.content}>
         <div className={classes.summary}>
@@ -29,7 +29,7 @@ function RecipeItem(props) {
           </Button>
         </div>
       </div>
-    </li>
+    </div>
   );
 }
 

@@ -2,7 +2,7 @@
   text-decoration: none;
   cursor: pointer;
   font: inherit;
-  background-color: rgb(217 119 6);
+  background-color: rgba(217, 119, 6, 0.797);
 
   
   /* border: 1px solid rgb(217 119 6); */
@@ -16,6 +16,6 @@
 
 .btn:hover,
 .btn:active {
-  background-color: rgba(180, 83, 9, 0.93);
+  background-color: rgba(180, 83, 9, 0.831);
   /* border-color: rgba(243, 148, 5, 0.93); */
 }

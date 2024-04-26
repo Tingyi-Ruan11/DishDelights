@@ -6,7 +6,7 @@ function Button(props) {
   if (props.link) {
     return (
       <Link href={props.link} legacyBehavior>
-        <a className={classes.btn}>{props.children}</a>
+        <a className={`${classes.btn} bg-amber-600 hover:bg-amber-700`}>{props.children}</a>
       </Link>
     );
   }
