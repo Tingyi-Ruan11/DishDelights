@@ -1,9 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
-import { getRecipeById, getFeaturedRecipes } from "@/dummy-recipes";
-import RecipeSummary from "../../components/recipe-detail/recipe-summary";
+import { getRecipeById } from "@/helpers/api-recipes";
 import RecipeLogistics from "../../components/recipe-detail/recipe-logistics";
-import RecipeContent from "../../components/recipe-detail/recipe-content";
 
 
 function RecipeDetailPage(props) {
@@ -24,15 +22,10 @@ function RecipeDetailPage(props) {
         <title>{recipe.strMeal}</title>
         <meta name="description" content={recipe.description} />
       </Head>
-      {/* <RecipeSummary imgurl={recipe.strMealThumb} /> */}
       <RecipeLogistics
         id={recipe.idMeal}
         data = {recipe[0]}
       />
-      {/* <RecipeContent>
-        <p>{recipe.description}</p>
-      </RecipeContent> */}
-      {/* <Comments recipeId={recipe.recipeId} /> */}
     </Fragment>
   );
 }
@@ -50,13 +43,8 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const recipes = await getFeaturedRecipes();
-
-  const paths = recipes.map((recipe) => ({
-    params: { idMeal: recipe.idMeal },
-  }));
   return {
-    paths: paths,
+    paths: [],
     fallback: "blocking",
   };
 }

@@ -18,23 +18,8 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
   const closeExpand = () => {
     setIsExpanded(false);
   };
-
-  //   const handlePageTurn = (event) => {
-  //     if (isExpanded){
-  //     const rect = event.currentTarget.getBoundingClientRect();
-  //     const x = event.clientX - rect.left; // 获取点击位置相对于卡片左侧的位置
-
-  //     if (x < rect.width / 2 && index > 0) {
-  //         prevStep(); // 点击左半部分，且不是第一步
-  //     } else if (x >= rect.width / 2 && index < totalSteps - 1) {
-  //         nextStep(); // 点击右半部分，且不是最后一步
-  //     }
-  //     event.stopPropagation();
-  //   }
-  // };
   const cardClick = () => {
     handleExpand();
-    // handlePageTurn();
   };
 
   const sentences = step.split(/(?<=[.!?])\s+/);
@@ -56,8 +41,6 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
         onMouseLeave={() => setShowButtons(false)}
         onClick={cardClick}
       >
-        {/* <div className="relative left-0 w-1/2" onClick={(e) => { e.stopPropagation(); prevStep();}}></div>
-      <div  className="relative right-0 w-1/2" onClick={(e) => { e.stopPropagation();nextStep()}}></div> */}
         <div
           className={`${
             isExpanded ? `absolute left-0` : "absolute left-0"
@@ -84,7 +67,6 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
             className="absolute left-0 top-0 bottom-0 w-1/2 cursor-pointer opacity-0 hover:opacity-100 focus:opacity-100"
             style={{ backgroundColor: "transparent" }}
           >
-            {/* 左侧按钮区域 */}
           </button>
         )}
 
@@ -128,7 +110,6 @@ function StepCard({ step, index, prevStep, nextStep, totalSteps }) {
             className="absolute right-0 top-0 bottom-0 w-1/2 cursor-pointer opacity-0 hover:opacity-100 focus:opacity-100"
             style={{ backgroundColor: "transparent" }}
           >
-            {/* 右侧按钮区域 */}
           </button>
         )}
       </div>

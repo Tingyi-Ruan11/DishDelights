@@ -1,50 +1,29 @@
-import { Fragment } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-
-// import { getAllEvents } from '../../helpers/api-util';
-import { getAllRecipes } from '@/dummy-recipes';
-import RecipeList from '../../components/recipes/recipe-list';
-import RecipesSearch from '../../components/recipes/recipe-search';
+import Head from "next/head";
+import RecipeList from "../../components/recipes/recipe-list";
+import Categories from "@/components/ui/categories";
+import Container from "@/components/container";
+import { useRecipes } from "@/store/recipe-context";
+import Footer from "@/components/layout/footer";
 
 function AllRecipesPage(props) {
-  const router = useRouter();
-  const { recipes } = props;
-
-  function findRecipesHandler(category, ingredient,keywords) {
-    const fullPath = `/events/${category}/${ingredient}/${keywords}`;
-
-    router.push(fullPath);
-  }
+  const { recipes } = useRecipes();
 
   return (
-    <Fragment>
+    <div>
       <Head>
-        <title>All my recipes</title>
-      </Head>
-      <Head>
-        <title>All Recipes</title>
+        <title>Dish Delights</title>
         <meta
-          name='description'
-          content='Find a lot of great recipes...'
+          name="description"
+          content="Find a lot of great Dish that allow you to evolve..."
         />
       </Head>
-      <RecipesSearch onSearch={findRecipesHandler} />
-      <RecipeList items={recipes} />
-    </Fragment>
+      <Categories/>
+      <Container>
+        <div className="mt-0">{recipes ? <RecipeList items={recipes} /> : <p>Loading...</p>}</div>
+      </Container>
+      <Footer/>
+    </div>
   );
-}
-
-export async function getStaticProps() {
-  const recipes = await getAllRecipes();
-  // console.log(recipes);
-
-  return {
-    props: {
-      recipes: recipes,
-    },
-    revalidate: 60
-  };
 }
 
 export default AllRecipesPage;

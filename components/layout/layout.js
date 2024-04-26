@@ -1,4 +1,4 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 
 import MainHeader from "./main-header";
 import { Nunito } from "next/font/google";

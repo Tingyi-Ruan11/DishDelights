@@ -4,7 +4,7 @@ import {
   getRecipeBySearch,
   getRandomRecipes,
   getCategories
-} from "@/dummy-recipes";
+} from "@/helpers/api-recipes";
 
 const RecipesContext = createContext(null);
 

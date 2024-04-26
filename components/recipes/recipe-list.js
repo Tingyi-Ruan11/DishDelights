@@ -1,10 +1,8 @@
 import RecipeItem from './recipe-item';
-import classes from './recipe-list.module.css';
 
 function RecipeList(props) {
   const { items } = props;
   console.log("items:", items);
-  // const firstImage = items
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8'>

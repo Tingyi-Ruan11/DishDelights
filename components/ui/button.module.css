@@ -3,19 +3,14 @@
   cursor: pointer;
   font: inherit;
   background-color: rgba(217, 119, 6, 0.797);
-
-  
-  /* border: 1px solid rgb(217 119 6); */
   border-radius: 6px;
   color: white;
   padding: 0.5rem 1.5rem;
   text-align: center;
-  /* box-shadow: 0 1px 6px rgba(243, 148, 5, 0.93); */
   
 }
 
 .btn:hover,
 .btn:active {
   background-color: rgba(180, 83, 9, 0.831);
-  /* border-color: rgba(243, 148, 5, 0.93); */
 }

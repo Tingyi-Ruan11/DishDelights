@@ -3,7 +3,6 @@ import Image from "next/image";
 import Button from "../ui/button";
 
 
-import ArrowRightIcon from "../icons/arrow-right-icon";
 import classes from "./recipe-item.module.css";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -23,7 +22,6 @@ function RecipeItem(props) {
           <Button link={exploreLink}>
             <span>Explore</span>
             <span className={classes.icon}>
-              {/* <ArrowRightIcon /> */}
               <IoIosArrowForward />
             </span>
           </Button>
